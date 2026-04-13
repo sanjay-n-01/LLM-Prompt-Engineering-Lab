@@ -121,11 +121,11 @@ export default function App() {
           <div className="space-y-4">
             <div className="flex items-center justify-between text-[10px] font-black uppercase tracking-widest text-slate-500">
               <span>Prompt Logic</span>
-              <span className="text-indigo-400 font-bold">Claude 3.5</span>
+              <span className="text-indigo-400 font-bold">Claude 4.6</span>
             </div>
             <div className="flex items-center justify-between text-[10px] font-black uppercase tracking-widest text-slate-500">
               <span>Generation</span>
-              <span className="text-indigo-400 font-bold">Gemini 1.5</span>
+              <span className="text-indigo-400 font-bold">Gemini 3 Flash</span>
             </div>
             <div className="mt-4 bg-slate-800 h-1 rounded-full overflow-hidden flex">
               <div className="w-1/2 h-full bg-indigo-500/50"></div>
@@ -151,7 +151,7 @@ export default function App() {
             </button>
             <div>
               <h2 className="text-lg lg:text-2xl font-extrabold text-slate-900 tracking-tight leading-none">
-                The Rank Paradox Lab
+                The Rank Paradox: Excellence as a Mission, First Place as a Byproduct.
               </h2>
               <p className="text-[10px] lg:text-sm text-slate-500 mt-1 font-medium">
                 Filtered by <span className="text-indigo-600 font-bold">{activeTier === 'Reflection' ? 'Reflection' : activeTier === 'All' ? 'All Iterations' : activeTier}</span>
