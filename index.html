@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <title>English Assignment: Prompt Lab Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
@@ -42,7 +42,7 @@
 
             .modal-content {
                 border-radius: 1.5rem !important;
-                width: 95% !important;
+                width: 96% !important;
                 max-height: 95% !important;
             }
 
@@ -159,14 +159,14 @@
 
         <!-- Mobile Tier Bar -->
         <div class="md:hidden flex overflow-x-auto p-4 gap-2 bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 no-scrollbar">
-            <button onclick="changeTier('All')" class="tier-btn-mobile whitespace-nowrap px-5 py-2.5 rounded-full text-xs font-black bg-indigo-600 text-white shadow-md">All Iterations</button>
-            <button onclick="changeTier('Tier 1')" class="tier-btn-mobile whitespace-nowrap px-5 py-2.5 rounded-full text-xs font-bold bg-slate-100 text-slate-500 hover:bg-slate-200 transition-colors">Tier 1: Raw</button>
-            <button onclick="changeTier('Tier 2')" class="tier-btn-mobile whitespace-nowrap px-5 py-2.5 rounded-full text-xs font-bold bg-slate-100 text-slate-500 hover:bg-slate-200 transition-colors">Tier 2: Basic</button>
-            <button onclick="changeTier('Tier 3')" class="tier-btn-mobile whitespace-nowrap px-5 py-2.5 rounded-full text-xs font-bold bg-slate-100 text-slate-500 hover:bg-slate-200 transition-colors">Tier 3: Structured</button>
-            <button onclick="changeTier('Tier 4')" class="tier-btn-mobile whitespace-nowrap px-5 py-2.5 rounded-full text-xs font-bold bg-slate-100 text-slate-500 hover:bg-slate-200 transition-colors">Tier 4: Philosophical</button>
-            <button onclick="changeTier('Tier 5')" class="tier-btn-mobile whitespace-nowrap px-5 py-2.5 rounded-full text-xs font-bold bg-slate-100 text-slate-500 hover:bg-slate-200 transition-colors">Tier 5: Adversarial</button>
-            <button onclick="changeTier('Tier 6')" class="tier-btn-mobile whitespace-nowrap px-5 py-2.5 rounded-full text-xs font-bold bg-slate-100 text-slate-500 hover:bg-slate-200 transition-colors">Tier 6: Stylistic</button>
-            <button onclick="showReflection()" class="tier-btn-mobile whitespace-nowrap px-5 py-2.5 rounded-full text-xs font-bold bg-indigo-50 text-indigo-600 hover:bg-indigo-100 transition-colors border border-indigo-100">Reflection</button>
+            <button onclick="changeTier('All')" class="tier-btn-mobile whitespace-nowrap px-4 py-2.5 rounded-full text-base font-black bg-indigo-600 text-white shadow-md">All Iterations</button>
+            <button onclick="changeTier('Tier 1')" class="tier-btn-mobile whitespace-nowrap px-4 py-2.5 rounded-full text-base font-bold bg-slate-100 text-slate-400 hover:bg-slate-200 transition-colors">Tier 1: Raw</button>
+            <button onclick="changeTier('Tier 2')" class="tier-btn-mobile whitespace-nowrap px-4 py-2.5 rounded-full text-base font-bold bg-slate-100 text-slate-400 hover:bg-slate-200 transition-colors">Tier 2: Basic</button>
+            <button onclick="changeTier('Tier 3')" class="tier-btn-mobile whitespace-nowrap px-4 py-2.5 rounded-full text-base font-bold bg-slate-100 text-slate-400 hover:bg-slate-200 transition-colors">Tier 3: Structured</button>
+            <button onclick="changeTier('Tier 4')" class="tier-btn-mobile whitespace-nowrap px-4 py-2.5 rounded-full text-base font-bold bg-slate-100 text-slate-400 hover:bg-slate-200 transition-colors">Tier 4: Philosophical</button>
+            <button onclick="changeTier('Tier 5')" class="tier-btn-mobile whitespace-nowrap px-4 py-2.5 rounded-full text-base font-bold bg-slate-100 text-slate-400 hover:bg-slate-200 transition-colors">Tier 5: Adversarial</button>
+            <button onclick="changeTier('Tier 6')" class="tier-btn-mobile whitespace-nowrap px-4 py-2.5 rounded-full text-base font-bold bg-slate-100 text-slate-400 hover:bg-slate-200 transition-colors">Tier 6: Stylistic</button>
+            <button onclick="showReflection()" class="tier-btn-mobile whitespace-nowrap px-4 py-2.5 rounded-full text-base font-bold bg-indigo-50 text-indigo-400 hover:bg-indigo-100 transition-colors border border-indigo-100">Reflection</button>
         </div>
 
         <header class="bg-white/80 backdrop-blur-md border-b border-slate-200 py-3 px-4 md:py-6 md:px-10 flex justify-between items-center z-20 flex-shrink-0">
@@ -186,13 +186,13 @@
             </div>
         </header>
 
-        <div class="flex-1 overflow-y-visible md:overflow-y-auto p-4 md:p-14 relative" id="grid-parent">
+        <div class="flex-1 overflow-y-visible md:overflow-y-auto p-4 md:p-10 lg:p-14 relative" id="grid-parent">
             <!-- Grid -->
             <div id="grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-8">
             </div>
         </div>
 
-        <div id="reflection-view" class="hidden h-auto md:h-full overflow-y-auto p-4 md:p-14 bg-white/40 backdrop-blur-xl">
+        <div id="reflection-view" class="hidden h-auto md:h-full overflow-y-auto p-4 md:p-10 lg:p-14 bg-white/40 backdrop-blur-xl">
             <div id="final-analysis" class="max-w-7xl mx-auto">
                 <div class="flex items-center gap-6 mb-16">
                     <h2 class="text-2xl lg:text-4xl font-black text-slate-900 tracking-tight">Author's Analysis</h2>
@@ -1258,12 +1258,10 @@
             refBtn.classList.remove('text-indigo-400', 'bg-indigo-500/10');
 
             // Handle mobile tier bar buttons
-            document.querySelectorAll('.tier-btn-mobile').forEach(b => {
-                b.classList.remove('bg-indigo-600', 'text-white', 'shadow-md');
-                b.classList.add('bg-slate-100', 'text-slate-500');
+                b.classList.add('bg-slate-100', 'text-slate-400');
                 if(b.innerText.includes('Reflection')) {
                     b.classList.add('bg-indigo-600', 'text-white', 'shadow-md');
-                    b.classList.remove('bg-indigo-50', 'text-indigo-600');
+                    b.classList.remove('bg-indigo-50', 'text-indigo-400');
                 }
             });
         }
@@ -1295,14 +1293,14 @@
             // Mobile Tier Bar logic
             document.querySelectorAll('.tier-btn-mobile').forEach(b => {
                 b.classList.remove('bg-indigo-600', 'text-white', 'shadow-md');
-                b.classList.add('bg-slate-100', 'text-slate-500');
+                b.classList.add('bg-slate-100', 'text-slate-400');
                 
                 const btnText = b.innerText.toLowerCase();
                 const targetText = tier.toLowerCase();
                 
                 if (btnText === targetText || (targetText === 'all' && btnText.includes('all'))) {
                      b.classList.add('bg-indigo-600', 'text-white', 'shadow-md');
-                     b.classList.remove('bg-slate-100', 'text-slate-500');
+                     b.classList.remove('bg-slate-100', 'text-slate-400');
                 }
             });
 
