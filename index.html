@@ -3,13 +3,19 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>English Assignment: Prompt Lab Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet">
     <style>
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+
         body {
             font-family: 'Outfit', sans-serif;
         }
@@ -158,15 +164,15 @@
     <main class="flex-1 flex flex-col h-full bg-slate-50 relative">
 
         <!-- Mobile Tier Bar -->
-        <div class="md:hidden flex overflow-x-auto p-4 gap-2 bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 no-scrollbar">
-            <button onclick="changeTier('All')" class="tier-btn-mobile whitespace-nowrap px-4 py-2.5 rounded-full text-base font-black bg-indigo-600 text-white shadow-md">All Iterations</button>
-            <button onclick="changeTier('Tier 1')" class="tier-btn-mobile whitespace-nowrap px-4 py-2.5 rounded-full text-base font-bold bg-slate-100 text-slate-400 hover:bg-slate-200 transition-colors">Tier 1: Raw</button>
-            <button onclick="changeTier('Tier 2')" class="tier-btn-mobile whitespace-nowrap px-4 py-2.5 rounded-full text-base font-bold bg-slate-100 text-slate-400 hover:bg-slate-200 transition-colors">Tier 2: Basic</button>
-            <button onclick="changeTier('Tier 3')" class="tier-btn-mobile whitespace-nowrap px-4 py-2.5 rounded-full text-base font-bold bg-slate-100 text-slate-400 hover:bg-slate-200 transition-colors">Tier 3: Structured</button>
-            <button onclick="changeTier('Tier 4')" class="tier-btn-mobile whitespace-nowrap px-4 py-2.5 rounded-full text-base font-bold bg-slate-100 text-slate-400 hover:bg-slate-200 transition-colors">Tier 4: Philosophical</button>
-            <button onclick="changeTier('Tier 5')" class="tier-btn-mobile whitespace-nowrap px-4 py-2.5 rounded-full text-base font-bold bg-slate-100 text-slate-400 hover:bg-slate-200 transition-colors">Tier 5: Adversarial</button>
-            <button onclick="changeTier('Tier 6')" class="tier-btn-mobile whitespace-nowrap px-4 py-2.5 rounded-full text-base font-bold bg-slate-100 text-slate-400 hover:bg-slate-200 transition-colors">Tier 6: Stylistic</button>
-            <button onclick="showReflection()" class="tier-btn-mobile whitespace-nowrap px-4 py-2.5 rounded-full text-base font-bold bg-indigo-50 text-indigo-400 hover:bg-indigo-100 transition-colors border border-indigo-100">Reflection</button>
+        <div class="md:hidden flex overflow-x-auto p-4 gap-2 bg-white border-b border-slate-200 sticky top-0 z-40 no-scrollbar w-full">
+            <button onclick="changeTier('All')" class="tier-btn-mobile whitespace-nowrap px-4 py-3 rounded-xl text-base font-black bg-indigo-600 text-white shadow-md">All Iterations</button>
+            <button onclick="changeTier('Tier 1')" class="tier-btn-mobile whitespace-nowrap px-4 py-3 rounded-xl text-base font-bold bg-slate-100 text-slate-400 hover:bg-slate-200 transition-colors">Tier 1</button>
+            <button onclick="changeTier('Tier 2')" class="tier-btn-mobile whitespace-nowrap px-4 py-3 rounded-xl text-base font-bold bg-slate-100 text-slate-400 hover:bg-slate-200 transition-colors">Tier 2</button>
+            <button onclick="changeTier('Tier 3')" class="tier-btn-mobile whitespace-nowrap px-4 py-3 rounded-xl text-base font-bold bg-slate-100 text-slate-400 hover:bg-slate-200 transition-colors">Tier 3</button>
+            <button onclick="changeTier('Tier 4')" class="tier-btn-mobile whitespace-nowrap px-4 py-3 rounded-xl text-base font-bold bg-slate-100 text-slate-400 hover:bg-slate-200 transition-colors">Tier 4</button>
+            <button onclick="changeTier('Tier 5')" class="tier-btn-mobile whitespace-nowrap px-4 py-3 rounded-xl text-base font-bold bg-slate-100 text-slate-400 hover:bg-slate-200 transition-colors">Tier 5</button>
+            <button onclick="changeTier('Tier 6')" class="tier-btn-mobile whitespace-nowrap px-4 py-3 rounded-xl text-base font-bold bg-slate-100 text-slate-400 hover:bg-slate-200 transition-colors">Tier 6</button>
+            <button onclick="showReflection()" class="tier-btn-mobile whitespace-nowrap px-4 py-3 rounded-xl text-base font-bold bg-indigo-50 text-indigo-400 border border-indigo-100">Reflection</button>
         </div>
 
         <header class="bg-white/80 backdrop-blur-md border-b border-slate-200 py-3 px-4 md:py-6 md:px-10 flex justify-between items-center z-20 flex-shrink-0">
@@ -244,7 +250,7 @@
                             input.</p>
                     </div>
                     <div
-                        class="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/50 flex flex-col hover:-translate-y-1 transition-transform">
+                        class="bg-white p-6 lg:p-10 rounded-[2rem] lg:rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/50 flex flex-col hover:-translate-y-1 transition-transform">
                         <div
                             class="w-10 h-10 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold mb-6">
                             5</div>
@@ -254,7 +260,7 @@
                     </div>
                 </div>
 
-                    class="relative bg-slate-900 rounded-[2.5rem] lg:rounded-[4rem] p-10 lg:p-24 overflow-hidden mb-20 font-sans text-left">
+                    class="relative bg-slate-900 rounded-[2rem] lg:rounded-[4rem] p-8 lg:p-24 overflow-hidden mb-20 font-sans text-left">
                     <div class="absolute inset-0 bg-indigo-600 mix-blend-multiply opacity-20"></div>
                     <div class="relative z-10 max-w-4xl">
                         <h2 class="text-3xl lg:text-5xl font-black text-white mb-10 tracking-tight leading-tight text-left">
@@ -295,8 +301,8 @@
             <div class="flex-1 overflow-y-auto p-6 lg:p-20">
                 <div class="max-w-3xl mx-auto">
                     <h3 id="modal-prompt"
-                        class="text-2xl md:text-4xl font-black text-slate-900 leading-tight mb-8 md:mb-16 tracking-tight text-center"></h3>
-                    <div id="modal-body" class="text-lg md:text-xl text-slate-700 leading-[1.8] font-serif whitespace-pre-wrap">
+                        class="text-xl md:text-3xl lg:text-4xl font-black text-slate-900 leading-tight mb-8 md:mb-16 tracking-tight text-center"></h3>
+                    <div id="modal-body" class="text-base md:text-lg lg:text-xl text-slate-700 leading-[1.8] font-serif whitespace-pre-wrap">
                     </div>
                 </div>
             </div>
