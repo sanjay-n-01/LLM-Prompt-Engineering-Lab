@@ -31,9 +31,28 @@
             box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
         }
 
+        aside {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
         @media (max-width: 1024px) {
-            .sidebar-closed { transform: translateX(-100%); }
-            .sidebar-open { transform: translateX(0); }
+            aside {
+                position: fixed;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                z-index: 50;
+                transform: translateX(-100%);
+                width: 75%;
+                max-width: 320px;
+            }
+            aside.sidebar-open {
+                transform: translateX(0);
+            }
+
+            .modal-content {
+                border-radius: 1.5rem !important;
+            }
         }
 
         /* Custom Scrollbar */
@@ -62,8 +81,10 @@
 
 <body class="bg-slate-50 text-slate-800 flex h-screen overflow-hidden">
 
+    <div id="sidebar-overlay" onclick="toggleSidebar()" class="fixed inset-0 bg-slate-950/50 backdrop-blur-sm z-40 hidden lg:hidden"></div>
+
     <!-- Sidebar: Dark Balanced -->
-    <aside class="w-80 bg-slate-900 text-white flex flex-col h-full flex-shrink-0 z-30">
+    <aside id="sidebar" class="bg-slate-900 text-white flex flex-col h-full flex-shrink-0 z-50">
         <div class="p-8 border-b border-white/10">
             <h1 class="text-2xl font-bold tracking-tight text-white flex items-center gap-3">
                 <span class="w-2 h-8 bg-indigo-500 rounded-full"></span>
@@ -155,22 +176,22 @@
             </div>
         </header>
 
-        <div class="flex-1 overflow-y-auto p-10 lg:p-14 relative" id="grid-parent">
+        <div class="flex-1 overflow-y-auto p-6 lg:p-14 relative" id="grid-parent">
             <!-- Grid -->
             <div id="grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-8">
             </div>
         </div>
 
-        <div id="reflection-view" class="hidden h-full overflow-y-auto p-10 lg:p-14 bg-white/40 backdrop-blur-xl">
+        <div id="reflection-view" class="hidden h-full overflow-y-auto p-6 lg:p-14 bg-white/40 backdrop-blur-xl">
             <div id="final-analysis" class="max-w-7xl mx-auto">
                 <div class="flex items-center gap-6 mb-16">
-                    <h2 class="text-4xl font-black text-slate-900 tracking-tight">Author's Analysis</h2>
+                    <h2 class="text-2xl lg:text-4xl font-black text-slate-900 tracking-tight">Author's Analysis</h2>
                     <div class="h-px flex-1 bg-slate-200"></div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 font-sans text-left">
                     <div
-                        class="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/50 flex flex-col hover:-translate-y-1 transition-transform">
+                        class="bg-white p-6 lg:p-10 rounded-[2rem] lg:rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/50 flex flex-col hover:-translate-y-1 transition-transform">
                         <div
                             class="w-10 h-10 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold mb-6">
                             1</div>
@@ -181,7 +202,7 @@
                             framing.</p>
                     </div>
                     <div
-                        class="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/50 flex flex-col hover:-translate-y-1 transition-transform">
+                        class="bg-white p-6 lg:p-10 rounded-[2rem] lg:rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/50 flex flex-col hover:-translate-y-1 transition-transform">
                         <div
                             class="w-10 h-10 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold mb-6">
                             2</div>
@@ -191,7 +212,7 @@
                             wrestling with the paradox. Structure improved the shape, but not yet the substance.</p>
                     </div>
                     <div
-                        class="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/50 flex flex-col hover:-translate-y-1 transition-transform">
+                        class="bg-white p-6 lg:p-10 rounded-[2rem] lg:rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/50 flex flex-col hover:-translate-y-1 transition-transform">
                         <div
                             class="w-10 h-10 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold mb-6">
                             3</div>
@@ -223,11 +244,10 @@
                     </div>
                 </div>
 
-                <div
-                    class="relative bg-slate-900 rounded-[4rem] p-16 lg:p-24 overflow-hidden mb-20 font-sans text-left">
+                    class="relative bg-slate-900 rounded-[2.5rem] lg:rounded-[4rem] p-10 lg:p-24 overflow-hidden mb-20 font-sans text-left">
                     <div class="absolute inset-0 bg-indigo-600 mix-blend-multiply opacity-20"></div>
                     <div class="relative z-10 max-w-4xl">
-                        <h2 class="text-5xl font-black text-white mb-10 tracking-tight leading-tight text-left">
+                        <h2 class="text-3xl lg:text-5xl font-black text-white mb-10 tracking-tight leading-tight text-left">
                             Conclusion: Prompt Engineering Is Thinking, Not Typing</h2>
                         <div class="space-y-8 text-indigo-100/80 text-xl leading-relaxed font-serif italic">
                             <p>"The single biggest lesson from 150 essays on one topic: <strong>the LLM is only as smart
@@ -246,10 +266,10 @@
 
     <!-- Modal System -->
     <div id="modal"
-        class="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-slate-950/40 modal-blur opacity-0 pointer-events-none transition-all duration-300">
+        class="fixed inset-0 z-[100] flex items-center justify-center p-4 lg:p-6 bg-slate-950/40 modal-blur opacity-0 pointer-events-none transition-all duration-300">
         <div id="modal-content"
-            class="bg-white w-full max-w-5xl max-h-[90vh] rounded-[3rem] shadow-2xl flex flex-col scale-95 transition-all duration-300 overflow-hidden">
-            <div class="px-10 py-8 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
+            class="modal-content bg-white w-full max-w-5xl max-h-[95vh] lg:max-h-[90vh] rounded-[2rem] lg:rounded-[3rem] shadow-2xl flex flex-col scale-95 transition-all duration-300 overflow-hidden">
+            <div class="px-6 py-5 lg:px-10 lg:py-8 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
                 <div class="flex items-center gap-6">
                     <span id="modal-label"
                         class="px-4 py-1.5 bg-indigo-100 text-indigo-700 text-[10px] font-black rounded-full uppercase tracking-widest shadow-sm"></span>
@@ -262,7 +282,7 @@
                     </svg>
                 </button>
             </div>
-            <div class="flex-1 overflow-y-auto p-12 lg:p-20">
+            <div class="flex-1 overflow-y-auto p-6 lg:p-20">
                 <div class="max-w-3xl mx-auto">
                     <h3 id="modal-prompt"
                         class="text-4xl font-black text-slate-900 leading-tight mb-16 tracking-tight text-center"></h3>
@@ -1181,6 +1201,13 @@
         const statCount = document.getElementById('stat-count');
         const activeTierLabel = document.getElementById('active-tier');
 
+        window.toggleSidebar = () => {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            sidebar.classList.toggle('sidebar-open');
+            overlay.classList.toggle('hidden');
+        };
+
         function renderGrid(data) {
             grid.innerHTML = data.map(e => `
                 <div class="essay-card bg-white p-8 rounded-[2rem] border border-slate-200/60 flex flex-col h-[320px] cursor-pointer shadow-sm relative group overflow-hidden" onclick="openModal(${e.id})">
@@ -1230,7 +1257,10 @@
             refBtn.classList.add('text-indigo-400', 'bg-indigo-500/10');
 
             currentTier = tier;
-            if(window.innerWidth < 1024) toggleSidebar();
+            if(window.innerWidth < 1024) {
+                const sidebar = document.getElementById('sidebar');
+                if(sidebar.classList.contains('sidebar-open')) toggleSidebar();
+            }
 
             document.querySelectorAll('.tier-btn').forEach(b => {
                 b.classList.remove('bg-indigo-600', 'text-white', 'shadow-lg', 'shadow-indigo-500/20');
