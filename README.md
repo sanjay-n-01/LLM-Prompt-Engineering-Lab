@@ -113,7 +113,3 @@ cp .env.example .env.local
 ```
 
 Do not commit `.env.local` or API keys to the repository.
-
-## License
-
-No license has been specified for this project yet.
